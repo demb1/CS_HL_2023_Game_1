@@ -1,6 +1,5 @@
 from tkinter import *
 from PIL import ImageTk, Image
-import os
 
 app = Tk()
 canvas = Canvas(app, width=800, height=500)
@@ -13,8 +12,9 @@ hero = canvas.create_image(400, 250, image=mario_img)
 chasser1 = canvas.create_oval(250, 100, 200, 50, tags="chasser", fill="red", outline="yellow")
 chasser2 = canvas.create_oval(500, 100, 550, 150, tags="chasser", fill="red", outline="yellow")
 
-xspeed1=-3
-yspeed1=3
+xspeed1 = -3
+yspeed1 = 3
+
 
 def move_chasser_1():
     global xspeed1, yspeed1
@@ -25,12 +25,20 @@ def move_chasser_1():
 
     if toppos <= 0 or bottompos >= 500:
         yspeed1 = -yspeed1
+
+    # check collision with hero
+    if canvas.coords(hero)[0] - 25 <= rightpos <= canvas.coords(hero)[0] + 25 and \
+            canvas.coords(hero)[1] - 25 <= bottompos <= canvas.coords(hero)[1] + 25:
+        exit(0)
+
     canvas.after(20, move_chasser_1)
+
 
 canvas.after(20, move_chasser_1)
 
-xspeed2=4
-yspeed2=4
+xspeed2 = 4
+yspeed2 = 4
+
 
 def move_chasser_2():
     global xspeed2, yspeed2
@@ -41,9 +49,17 @@ def move_chasser_2():
 
     if toppos <= 0 or bottompos >= 500:
         yspeed2 = -yspeed2
+
+    # check collision with hero
+    if canvas.coords(hero)[0] - 25 <= rightpos <= canvas.coords(hero)[0] + 25 and \
+            canvas.coords(hero)[1] - 25 <= bottompos <= canvas.coords(hero)[1] + 25:
+        exit(0)
+
     canvas.after(20, move_chasser_2)
 
+
 canvas.after(20, move_chasser_2)
+
 
 def coordsexit():
     if canvas.coords(hero)[0] > 755:
@@ -68,18 +84,6 @@ def anymove(event):
         coordsexit()
     elif event.char == "w":
         canvas.move(hero, 0, -10)
-        coordsexit()
-    elif event.char == "`":
-        canvas.move(hero, -7, 7)
-        coordsexit()
-    elif event.char == "q":
-        canvas.move(hero, -7, -7)
-        coordsexit()
-    elif event.char == "c":
-        canvas.move(hero, 7, 7)
-        coordsexit()
-    elif event.char == "r":
-        canvas.move(hero, 7, -7)
         coordsexit()
 
 
