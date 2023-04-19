@@ -1,5 +1,6 @@
 from tkinter import *
 from PIL import ImageTk, Image
+from math import *
 
 app = Tk()
 canvas = Canvas(app, width=800, height=500)
@@ -7,10 +8,15 @@ canvas.pack()
 app.bind()
 app.title('Run away game version 1.0.0')
 
-mario_img = ImageTk.PhotoImage(Image.open("mario.png"))
+image = Image.open("mario.png")
+resize_image = image.resize((50, 50))
+
+mario_img = ImageTk.PhotoImage(resize_image)
 hero = canvas.create_image(400, 250, image=mario_img)
 chasser1 = canvas.create_oval(250, 100, 200, 50, tags="chasser", fill="red", outline="yellow")
 chasser2 = canvas.create_oval(500, 100, 550, 150, tags="chasser", fill="red", outline="yellow")
+
+chasers = [chasser1, chasser2]
 
 xspeed1 = -3
 yspeed1 = 3
@@ -71,6 +77,17 @@ def coordsexit():
     elif canvas.coords(hero)[1] < 0:
         exit(0)
 
+def collision():
+    for i in range(len(chasers)):
+        for j in range(i + 1, len(chasers)):
+            chaser1 = chasers[i]
+            chaser2 = chasers[j]
+            x1, y1, x2, y2 = canvas.coords(chaser1)
+            x3, y3, x4, y4 = canvas.coords(chaser2)
+            dx = x1 - x3
+            dy = y1 - y3
+            if sqrt(dx * dx + dy * dy) < 50:
+                exit(0)
 
 def anymove(event):
     if event.char == "a":
