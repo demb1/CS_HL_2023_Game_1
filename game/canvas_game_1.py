@@ -7,7 +7,6 @@ canvas.pack()
 app.bind()
 app.title('Run away game version 1.1.1')
 
-
 def update_timer(seconds):
     minutes = seconds // 60
     seconds = seconds % 60
