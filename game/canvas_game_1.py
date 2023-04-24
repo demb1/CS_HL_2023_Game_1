@@ -7,6 +7,24 @@ canvas.pack()
 app.bind()
 app.title('Run away game version 1.1.1')
 
+
+def update_timer(seconds):
+    minutes = seconds // 60
+    seconds = seconds % 60
+    timer_label.config(text="{:02d}:{:02d}".format(minutes, seconds))
+
+def start_timer(seconds):
+    if seconds == 360:
+        exit(0)
+    else:
+        update_timer(seconds)
+        canvas.after(1000, start_timer, seconds+1)
+
+timer_label = Label(app, text="00:00")
+timer_label.place(x=750, y=10)
+
+start_timer(0)
+
 image = Image.open("mario.png")
 resize_image = image.resize((50, 50))
 
@@ -33,14 +51,6 @@ def move_chaser_1():
     if canvas.coords(hero)[0] - 25 <= rightpos <= canvas.coords(hero)[0] + 25 and \
         canvas.coords(hero)[1] - 25 <= bottompos <= canvas.coords(hero)[1] + 25:
         exit(0)
-    #if canvas.coords(hero)[0] == leftpos:
-    #       exit(0)
-    #if canvas.coords(hero)[1] == toppos:
-    #        exit(0)
-    #if canvas.coords(hero)[2] == rightpos:
-    #        exit(0)
-    #if canvas.coords(hero)[3] == bottompos:
-    #        exit(0)
 
     canvas.after(20, move_chaser_1)
 
@@ -68,7 +78,6 @@ def move_chaser_2():
 
 
 canvas.after(20, move_chaser_2)
-
 
 def coordsexit():
     if canvas.coords(hero)[0] > 755:
