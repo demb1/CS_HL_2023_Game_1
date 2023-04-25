@@ -41,7 +41,6 @@ gun4_label.pack()
 gun4_label.place(x=0, y=400)
 app.after(0, update1, 0)
 
-
 #timer
 def update_timer(seconds):
     minutes = seconds // 60
@@ -66,16 +65,16 @@ resize_heart = heart.resize((40, 40))
 heart_img = ImageTk.PhotoImage(resize_heart)
 heartDisplay = canvas.create_image(25, 25, image=heart_img)
 
+#hero
 image = Image.open("mario.png")
 resize_hero = image.resize((50, 50))
-
 mario_img = ImageTk.PhotoImage(resize_hero)
 hero = canvas.create_image(400, 250, image=mario_img)
 chaser1 = canvas.create_oval(250, 100, 200, 50, tags="chasser", fill="red", outline="yellow")
 chaser2 = canvas.create_oval(500, 100, 550, 150, tags="chasser", fill="red", outline="yellow")
-
 chasers = [chaser1, chaser2]
 
+#chasers moving
 xspeed1 = -3
 yspeed1 = 3
 
@@ -118,6 +117,7 @@ def move_chaser_2():
 
 canvas.after(20, move_chaser_2)
 
+#cords exit rule
 def coordsexit():
     if canvas.coords(hero)[0] > 755:
         exit(0)
@@ -128,7 +128,7 @@ def coordsexit():
     elif canvas.coords(hero)[1] < 0:
         exit(0)
 
-
+#hero moving
 def anymove(event):
     if event.char == "a":
         canvas.move(hero, -10, 0)
