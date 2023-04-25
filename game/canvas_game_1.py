@@ -23,6 +23,12 @@ def update1(ind):
     gun2_label.configure(image=frame)
     gun3_label.configure(image=frame)
     gun4_label.configure(image=frame)
+    gunHorizontal_label.configure(image=frame)
+    gunHorizontal2_label.configure(image=frame)
+    gunHorizontal3_label.configure(image=frame)
+    gunHorizontal4_label.configure(image=frame)
+    gunHorizontal5_label.configure(image=frame)
+    gunHorizontal6_label.configure(image=frame)
     app.after(10000, update1, ind)
 gun_label = Label(app)
 gun_label.pack()
@@ -39,6 +45,30 @@ app.after(0, update1, 0)
 gun4_label = Label(app)
 gun4_label.pack()
 gun4_label.place(x=0, y=400)
+app.after(0, update1, 0)
+gunHorizontal_label = Label(app)
+gunHorizontal_label.pack()
+gunHorizontal_label.place(x=75, y=0)
+app.after(0, update1, 0)
+gunHorizontal2_label = Label(app)
+gunHorizontal2_label.pack()
+gunHorizontal2_label.place(x=200, y=0)
+app.after(0, update1, 0)
+gunHorizontal3_label = Label(app)
+gunHorizontal3_label.pack()
+gunHorizontal3_label.place(x=325, y=0)
+app.after(0, update1, 0)
+gunHorizontal4_label = Label(app)
+gunHorizontal4_label.pack()
+gunHorizontal4_label.place(x=450, y=0)
+app.after(0, update1, 0)
+gunHorizontal5_label = Label(app)
+gunHorizontal5_label.pack()
+gunHorizontal5_label.place(x=575, y=0)
+app.after(0, update1, 0)
+gunHorizontal6_label = Label(app)
+gunHorizontal6_label.pack()
+gunHorizontal6_label.place(x=700, y=0)
 app.after(0, update1, 0)
 
 #timer
@@ -59,11 +89,19 @@ timer_label.place(x=750, y=10)
 
 start_timer(0)
 
-#display heart
+#display hearts
 heart = Image.open("heart.png")
 resize_heart = heart.resize((40, 40))
 heart_img = ImageTk.PhotoImage(resize_heart)
 heartDisplay = canvas.create_image(25, 25, image=heart_img)
+
+def updateHearts():
+    hearts_num = 5
+    hearts_label.config(text=hearts_num)
+hearts_label = Label(app, text="0")
+hearts_label.place(x=55, y=10)
+
+updateHearts()
 
 #hero
 image = Image.open("mario.png")
