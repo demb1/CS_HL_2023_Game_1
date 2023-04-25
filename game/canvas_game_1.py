@@ -1,11 +1,32 @@
 from tkinter import *
 from PIL import ImageTk, Image
+import time
+import os
+
 
 app = Tk()
 canvas = Canvas(app, width=800, height=500)
 canvas.pack()
 app.bind()
 app.title('Run away game version 1.1.1')
+
+frameCnt = 3
+frames = [PhotoImage(file='gun_gif_1.gif', format='gif -index %i' % i) for i in range(frameCnt)]
+
+def update(ind):
+
+    frame = frames[ind]
+    ind += 1
+    if ind == frameCnt:
+        ind = 0
+    gun_label.configure(image=frame)
+    app.after(10000, update, ind)
+gun_label = Label(app)
+gun_label.pack()
+gun_label.place(x=0, y=100)
+app.after(0, update, 0)
+
+
 
 def update_timer(seconds):
     minutes = seconds // 60
