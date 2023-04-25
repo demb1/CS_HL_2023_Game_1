@@ -3,13 +3,11 @@ from PIL import ImageTk, Image
 import time
 import os
 
-
 app = Tk()
 canvas = Canvas(app, width=800, height=500)
 canvas.pack()
 app.bind()
 app.title('Run away game version 1.1.1')
-
 
 #guns
 frameCnt = 3
