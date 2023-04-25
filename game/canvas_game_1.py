@@ -1,7 +1,6 @@
 from tkinter import *
 from PIL import ImageTk, Image
-import time
-import os
+
 
 app = Tk()
 canvas = Canvas(app, width=800, height=500)
@@ -12,10 +11,12 @@ app.title('Run away game version 1.1.1')
 #guns
 frameCnt = 3
 frames = [PhotoImage(file='gun_gif_1.gif', format='gif -index %i' % i) for i in range(frameCnt)]
+frames2 = [PhotoImage(file='gun_gif_2.gif', format='gif -index %i' % i) for i in range(frameCnt)]
 
 def update1(ind):
 
     frame = frames[ind]
+    frame2 = frames2[ind]
     ind += 1
     if ind == frameCnt:
         ind = 0
@@ -23,13 +24,13 @@ def update1(ind):
     gun2_label.configure(image=frame)
     gun3_label.configure(image=frame)
     gun4_label.configure(image=frame)
-    gunHorizontal_label.configure(image=frame)
-    gunHorizontal2_label.configure(image=frame)
-    gunHorizontal3_label.configure(image=frame)
-    gunHorizontal4_label.configure(image=frame)
-    gunHorizontal5_label.configure(image=frame)
-    gunHorizontal6_label.configure(image=frame)
-    app.after(10000, update1, ind)
+    gunHorizontal_label.configure(image=frame2)
+    gunHorizontal2_label.configure(image=frame2)
+    gunHorizontal3_label.configure(image=frame2)
+    gunHorizontal4_label.configure(image=frame2)
+    gunHorizontal5_label.configure(image=frame2)
+    gunHorizontal6_label.configure(image=frame2)
+    app.after(1000, update1, ind)
 gun_label = Label(app)
 gun_label.pack()
 gun_label.place(x=0, y=100)
