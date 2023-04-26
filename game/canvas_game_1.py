@@ -31,45 +31,60 @@ def update1(ind):
     gunHorizontal5_label.configure(image=frame2)
     gunHorizontal6_label.configure(image=frame2)
     app.after(1000, update1, ind)
+
+b = 100
+aa = 75
+
+def move_gun():
+    global b, aa
+    while b < 175:
+        b += 5
+    while aa < 150:
+        aa += 5
+    canvas.after(20, move_gun)
+
+
+canvas.after(20, move_gun)
+
 gun_label = Label(app)
 gun_label.pack()
-gun_label.place(x=0, y=100)
+gun_label.place(x=0, y=b)
 app.after(0, update1, 0)
 gun2_label = Label(app)
 gun2_label.pack()
-gun2_label.place(x=0, y=200)
+gun2_label.place(x=0, y=b + 100)
 app.after(0, update1, 0)
 gun3_label = Label(app)
 gun3_label.pack()
-gun3_label.place(x=0, y=300)
+gun3_label.place(x=0, y=b + 200)
 app.after(0, update1, 0)
 gun4_label = Label(app)
 gun4_label.pack()
-gun4_label.place(x=0, y=400)
+gun4_label.place(x=0, y=b + 300)
 app.after(0, update1, 0)
 gunHorizontal_label = Label(app)
 gunHorizontal_label.pack()
-gunHorizontal_label.place(x=75, y=0)
+gunHorizontal_label.place(x=aa, y=0)
 app.after(0, update1, 0)
 gunHorizontal2_label = Label(app)
 gunHorizontal2_label.pack()
-gunHorizontal2_label.place(x=200, y=0)
+gunHorizontal2_label.place(x=aa + 125, y=0)
 app.after(0, update1, 0)
 gunHorizontal3_label = Label(app)
 gunHorizontal3_label.pack()
-gunHorizontal3_label.place(x=325, y=0)
+gunHorizontal3_label.place(x=aa + 250, y=0)
 app.after(0, update1, 0)
 gunHorizontal4_label = Label(app)
 gunHorizontal4_label.pack()
-gunHorizontal4_label.place(x=450, y=0)
+gunHorizontal4_label.place(x=aa + 375, y=0)
 app.after(0, update1, 0)
 gunHorizontal5_label = Label(app)
 gunHorizontal5_label.pack()
-gunHorizontal5_label.place(x=575, y=0)
+gunHorizontal5_label.place(x=aa + 500, y=0)
 app.after(0, update1, 0)
 gunHorizontal6_label = Label(app)
 gunHorizontal6_label.pack()
-gunHorizontal6_label.place(x=700, y=0)
+gunHorizontal6_label.place(x=aa + 625, y=0)
 app.after(0, update1, 0)
 
 #timer
@@ -125,7 +140,7 @@ def move_chaser_1():
         xspeed1 = -xspeed1
     if toppos <= 0 or bottompos >= 500:
         yspeed1 = -yspeed1
-    # check collision with hero
+    #check collision with hero
     if canvas.coords(hero)[0] - 25 <= rightpos <= canvas.coords(hero)[0] + 25 and \
         canvas.coords(hero)[1] - 25 <= bottompos <= canvas.coords(hero)[1] + 25:
         exit(0)
@@ -146,7 +161,7 @@ def move_chaser_2():
         xspeed2 = -xspeed2
     if toppos <= 0 or bottompos >= 500:
         yspeed2 = -yspeed2
-    # check collision with hero
+    #check collision with hero
     if canvas.coords(hero)[0] - 25 <= rightpos <= canvas.coords(hero)[0] + 25 and \
         canvas.coords(hero)[1] - 25 <= bottompos <= canvas.coords(hero)[1] + 25:
         exit(0)
@@ -158,28 +173,28 @@ canvas.after(20, move_chaser_2)
 
 #cords exit rule
 def coordsexit():
-    if canvas.coords(hero)[0] > 755:
+    if canvas.coords(hero)[0] > 785:
         exit(0)
-    elif canvas.coords(hero)[0] < 0:
+    elif canvas.coords(hero)[0] < 20:
         exit(0)
-    elif canvas.coords(hero)[1] > 455:
+    elif canvas.coords(hero)[1] > 480:
         exit(0)
-    elif canvas.coords(hero)[1] < 0:
+    elif canvas.coords(hero)[1] < 20:
         exit(0)
 
 #hero moving
 def anymove(event):
     if event.char == "a":
-        canvas.move(hero, -10, 0)
+        canvas.move(hero, -20, 0)
         coordsexit()
     elif event.char == "d":
-        canvas.move(hero, 10, 0)
+        canvas.move(hero, 20, 0)
         coordsexit()
     elif event.char == "s":
-        canvas.move(hero, 0, 10)
+        canvas.move(hero, 0, 20)
         coordsexit()
     elif event.char == "w":
-        canvas.move(hero, 0, -10)
+        canvas.move(hero, 0, -20)
         coordsexit()
 
 
