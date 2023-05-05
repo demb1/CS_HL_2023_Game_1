@@ -159,6 +159,11 @@ hearts_label.place(x=55, y=10)
 
 updateHearts()
 
+#shoots
+shoot_texture = Image.open("shoot.png")
+shoot_tex = ImageTk.PhotoImage(shoot_texture)
+shoot1 = canvas.create_image(200, 200, image=shoot_tex)
+
 #hero
 image = Image.open("mario.png")
 resize_hero = image.resize((50, 50))
