@@ -2,12 +2,13 @@ import random
 from tkinter import *
 from PIL import ImageTk, Image
 from time import *
+import pygame
 
 app = Tk()
 canvas = Canvas(app, width=800, height=500)
 canvas.pack()
 app.bind()
-app.title('Run away game version 1.2.0')
+app.title('Run away game version 1.2.1')
 
 # guns
 frameCnt = 3
@@ -208,6 +209,9 @@ shootv10 = canvas.create_image(623, c10, image=shoot_vertical_img)
 shootv11 = canvas.create_image(683, c11, image=shoot_vertical_img)
 shootv12 = canvas.create_image(743, c12, image=shoot_vertical_img)
 
+shoots = [shoot1, shoot2, shoot3, shoot4, shoot5, shoot6, shoot7, shoot8, shoot9, shootv1, shootv2, shootv3, shootv4,
+          shootv5, shootv6, shootv7, shootv8, shootv9, shootv10, shootv11, shootv12]
+
 yspeed = 1
 xspeed = 1
 def move_shoots():
@@ -302,62 +306,44 @@ def move_shoots():
 
 canvas.after(3, move_shoots)
 
-def check_collision():
-    hearts_num = 5
-    hearts_label = Label(app, text="0")
-    hearts_label.config(text=hearts_num)
-    hearts_label.place(x=55, y=10)
+# hearts
+hearts_num = 5
+hearts_label = Label(app)
+hearts_label.place(x=55, y=10)
+hearts_label.config(text=hearts_num)
+def update_hearts():
+    global hearts_num
     if hearts_num == 0:
         canvas.create_text(400, 250, text="GAME OVER", fill="red", font=('Helvetica 50 bold'))
         sleep(20)
         print(timer_label)
         exit()
-    if canvas.coords(hero)[0] == canvas.coords(shoot1)[2]:
-        hearts_num -= 1
-    if canvas.coords(hero)[0] == canvas.coords(shoot2)[2]:
-        hearts_num -= 1
-    if canvas.coords(hero)[0] == canvas.coords(shoot3)[2]:
-        hearts_num -= 1
-    if canvas.coords(hero)[0] == canvas.coords(shoot4)[2]:
-        hearts_num -= 1
-    if canvas.coords(hero)[0] == canvas.coords(shoot5)[2]:
-        hearts_num -= 1
-    if canvas.coords(hero)[0] == canvas.coords(shoot6)[2]:
-        hearts_num -= 1
-    if canvas.coords(hero)[0] == canvas.coords(shoot7)[2]:
-        hearts_num -= 1
-    if canvas.coords(hero)[0] == canvas.coords(shoot8)[2]:
-        hearts_num -= 1
-    if canvas.coords(hero)[0] == canvas.coords(shoot9)[2]:
-        hearts_num -= 1
-    if canvas.coords(hero)[0] == canvas.coords(shoot1)[2]:
-        hearts_num -= 1
-    if canvas.coords(hero)[1] == canvas.coords(shootv1)[3]:
-        hearts_num -= 1
-    if canvas.coords(hero)[1] == canvas.coords(shootv2)[3]:
-        hearts_num -= 1
-    if canvas.coords(hero)[1] == canvas.coords(shootv3)[3]:
-        hearts_num -= 1
-    if canvas.coords(hero)[1] == canvas.coords(shootv4)[3]:
-        hearts_num -= 1
-    if canvas.coords(hero)[1] == canvas.coords(shootv5)[3]:
-        hearts_num -= 1
-    if canvas.coords(hero)[1] == canvas.coords(shootv6)[3]:
-        hearts_num -= 1
-    if canvas.coords(hero)[1] == canvas.coords(shootv7)[3]:
-        hearts_num -= 1
-    if canvas.coords(hero)[1] == canvas.coords(shootv8)[3]:
-        hearts_num -= 1
-    if canvas.coords(hero)[1] == canvas.coords(shootv9)[3]:
-        hearts_num -= 1
-    if canvas.coords(hero)[1] == canvas.coords(shootv10)[3]:
-        hearts_num -= 1
-    if canvas.coords(hero)[1] == canvas.coords(shootv11)[3]:
-        hearts_num -= 1
-    if canvas.coords(hero)[1] == canvas.coords(shootv12)[3]:
-        hearts_num -= 1
-    canvas.after(1, check_collision())
+    hearts_num -= 1
+    hearts_label.config(text=hearts_num)
+    print(hearts_num)
 
+# collision checker
+def collision_checker():
+    # for horizontal bullets
+    if canvas.coords(hero)[0] < canvas.coords(shoot1)[0] + 50 and canvas.coords(hero)[0] + 34 > canvas.coords(shoot1)[0] and canvas.coords(hero)[1] < canvas.coords(shoot1)[1] + 50 and 24 + canvas.coords(hero)[1] > canvas.coords(shoot1)[1]:
+        update_hearts()
+    if canvas.coords(hero)[0] < canvas.coords(shoot2)[0] + 50 and canvas.coords(hero)[0] + 34 > canvas.coords(shoot2)[0] and canvas.coords(hero)[1] < canvas.coords(shoot2)[1] + 50 and 24 + canvas.coords(hero)[1] > canvas.coords(shoot2)[1]:
+        update_hearts()
+    if canvas.coords(hero)[0] < canvas.coords(shoot3)[0] + 50 and canvas.coords(hero)[0] + 34 > canvas.coords(shoot3)[0] and canvas.coords(hero)[1] < canvas.coords(shoot3)[1] + 50 and 24 + canvas.coords(hero)[1] > canvas.coords(shoot3)[1]:
+        update_hearts()
+    if canvas.coords(hero)[0] < canvas.coords(shoot4)[0] + 50 and canvas.coords(hero)[0] + 34 > canvas.coords(shoot4)[0] and canvas.coords(hero)[1] < canvas.coords(shoot4)[1] + 50 and 24 + canvas.coords(hero)[1] > canvas.coords(shoot4)[1]:
+        update_hearts()
+    if canvas.coords(hero)[0] < canvas.coords(shoot5)[0] + 50 and canvas.coords(hero)[0] + 34 > canvas.coords(shoot5)[0] and canvas.coords(hero)[1] < canvas.coords(shoot5)[1] + 50 and 24 + canvas.coords(hero)[1] > canvas.coords(shoot5)[1]:
+        update_hearts()
+    if canvas.coords(hero)[0] < canvas.coords(shoot6)[0] + 50 and canvas.coords(hero)[0] + 34 > canvas.coords(shoot6)[0] and canvas.coords(hero)[1] < canvas.coords(shoot6)[1] + 50 and 24 + canvas.coords(hero)[1] > canvas.coords(shoot6)[1]:
+        update_hearts()
+    if canvas.coords(hero)[0] < canvas.coords(shoot7)[0] + 50 and canvas.coords(hero)[0] + 34 > canvas.coords(shoot7)[0] and canvas.coords(hero)[1] < canvas.coords(shoot7)[1] + 50 and 24 + canvas.coords(hero)[1] > canvas.coords(shoot7)[1]:
+        update_hearts()
+    if canvas.coords(hero)[0] < canvas.coords(shoot8)[0] + 50 and canvas.coords(hero)[0] + 34 > canvas.coords(shoot8)[0] and canvas.coords(hero)[1] < canvas.coords(shoot8)[1] + 50 and 24 + canvas.coords(hero)[1] > canvas.coords(shoot8)[1]:
+        update_hearts()
+    if canvas.coords(hero)[0] < canvas.coords(shoot9)[0] + 50 and canvas.coords(hero)[0] + 34 > canvas.coords(shoot9)[0] and canvas.coords(hero)[1] < canvas.coords(shoot9)[1] + 50 and 24 + canvas.coords(hero)[1] > canvas.coords(shoot9)[1]:
+        update_hearts()
+    canvas.after(1, collision_checker)
 
 # hero
 image = Image.open("mario.png")
@@ -376,7 +362,7 @@ def coordsexit():
     elif canvas.coords(hero)[1] < 20:
         exit(0)
 
-# hero moving
+# hero movement
 def anymove(event):
     if event.char == "a":
         canvas.move(hero, -20, 0)
