@@ -1,7 +1,7 @@
 import random
 from tkinter import *
 from PIL import ImageTk, Image
-
+from time import *
 
 app = Tk()
 canvas = Canvas(app, width=800, height=500)
@@ -146,19 +146,11 @@ timer_label.place(x=750, y=10)
 
 start_timer(0)
 
-# display hearts
+# display heart
 heart = Image.open("heart.png")
 resize_heart = heart.resize((40, 40))
 heart_img = ImageTk.PhotoImage(resize_heart)
 heartDisplay = canvas.create_image(25, 25, image=heart_img)
-
-def updateHearts():
-    hearts_num = 5
-    hearts_label.config(text=hearts_num)
-hearts_label = Label(app, text="0")
-hearts_label.place(x=55, y=10)
-
-updateHearts()
 
 # random numbers for horizontal shoot generation
 g1 = random.randint(-1000, 0)
@@ -203,18 +195,18 @@ shoot9 = canvas.create_image(g9, 62, image=shoot_img)
 shoot = Image.open("shoot_vertical.png")
 resize_shoot_vertical = shoot.resize((24, 34))
 shoot_vertical_img = ImageTk.PhotoImage(resize_shoot_vertical)
-shootv1 = canvas.create_image(70, c1, image=shoot_vertical_img)
-shootv2 = canvas.create_image(130, c2, image=shoot_vertical_img)
-shootv3 = canvas.create_image(190, c3, image=shoot_vertical_img)
-shootv4 = canvas.create_image(250, c4, image=shoot_vertical_img)
-shootv5 = canvas.create_image(310, c5, image=shoot_vertical_img)
-shootv6 = canvas.create_image(370, c6, image=shoot_vertical_img)
-shootv7 = canvas.create_image(430, c7, image=shoot_vertical_img)
-shootv8 = canvas.create_image(490, c8, image=shoot_vertical_img)
-shootv9 = canvas.create_image(550, c9, image=shoot_vertical_img)
-shootv10 = canvas.create_image(610, c10, image=shoot_vertical_img)
-shootv11 = canvas.create_image(670, c11, image=shoot_vertical_img)
-shootv12 = canvas.create_image(730, c12, image=shoot_vertical_img)
+shootv1 = canvas.create_image(83, c1, image=shoot_vertical_img)
+shootv2 = canvas.create_image(143, c2, image=shoot_vertical_img)
+shootv3 = canvas.create_image(203, c3, image=shoot_vertical_img)
+shootv4 = canvas.create_image(263, c4, image=shoot_vertical_img)
+shootv5 = canvas.create_image(323, c5, image=shoot_vertical_img)
+shootv6 = canvas.create_image(383, c6, image=shoot_vertical_img)
+shootv7 = canvas.create_image(443, c7, image=shoot_vertical_img)
+shootv8 = canvas.create_image(503, c8, image=shoot_vertical_img)
+shootv9 = canvas.create_image(563, c9, image=shoot_vertical_img)
+shootv10 = canvas.create_image(623, c10, image=shoot_vertical_img)
+shootv11 = canvas.create_image(683, c11, image=shoot_vertical_img)
+shootv12 = canvas.create_image(743, c12, image=shoot_vertical_img)
 
 yspeed = 1
 xspeed = 1
@@ -260,56 +252,111 @@ def move_shoots():
     if canvas.coords(shootv1)[1] > 500:
         canvas.move(shootv1, 0, random.randint(-1800, -900))
     else:
-        canvas.move(shootv1, yspeed, 0)
+        canvas.move(shootv1, 0, yspeed)
     if canvas.coords(shootv2)[1] > 500:
         canvas.move(shootv2, 0, random.randint(-1800, -900))
     else:
-        canvas.move(shootv2, yspeed, 0)
+        canvas.move(shootv2, 0, yspeed)
     if canvas.coords(shootv3)[1] > 500:
         canvas.move(shootv3, 0, random.randint(-1800, -900))
     else:
-        canvas.move(shootv3, yspeed, 0)
+        canvas.move(shootv3, 0, yspeed)
     if canvas.coords(shootv4)[1] > 500:
         canvas.move(shootv4, 0, random.randint(-1800, -900))
     else:
-        canvas.move(shootv4, yspeed, 0)
+        canvas.move(shootv4, 0, yspeed)
     if canvas.coords(shootv5)[1] > 500:
         canvas.move(shootv5, 0, random.randint(-1800, -900))
     else:
-        canvas.move(shootv5, yspeed, 0)
+        canvas.move(shootv5, 0, yspeed)
     if canvas.coords(shootv6)[1] > 500:
         canvas.move(shootv6, 0, random.randint(-1800, -900))
     else:
-        canvas.move(shootv6, yspeed, 0)
+        canvas.move(shootv6, 0, yspeed)
     if canvas.coords(shootv7)[1] > 500:
         canvas.move(shootv7, 0, random.randint(-1800, -900))
     else:
-        canvas.move(shootv7, yspeed, 0)
+        canvas.move(shootv7, 0, yspeed)
     if canvas.coords(shootv8)[1] > 500:
         canvas.move(shootv8, 0, random.randint(-1800, -900))
     else:
-        canvas.move(shootv8, yspeed, 0)
+        canvas.move(shootv8, 0, yspeed)
     if canvas.coords(shootv9)[1] > 500:
         canvas.move(shootv9, 0, random.randint(-1800, -900))
     else:
-        canvas.move(shootv9, yspeed, 0)
+        canvas.move(shootv9, 0, yspeed)
     if canvas.coords(shootv10)[1] > 500:
         canvas.move(shootv10, 0, random.randint(-1800, -900))
     else:
-        canvas.move(shootv10, yspeed, 0)
+        canvas.move(shootv10, 0, yspeed)
     if canvas.coords(shootv11)[1] > 500:
         canvas.move(shootv11, 0, random.randint(-1800, -900))
     else:
-        canvas.move(shootv11, yspeed, 0)
+        canvas.move(shootv11, 0, yspeed)
     if canvas.coords(shootv12)[1] > 500:
         canvas.move(shootv12, 0, random.randint(-1800, -900))
     else:
-        canvas.move(shootv12, yspeed, 0)
+        canvas.move(shootv12, 0, yspeed)
     canvas.after(3, move_shoots)
 
 
 canvas.after(3, move_shoots)
 
+def check_collision():
+    hearts_num = 5
+    hearts_label = Label(app, text="0")
+    hearts_label.config(text=hearts_num)
+    hearts_label.place(x=55, y=10)
+    if hearts_num == 0:
+        canvas.create_text(400, 250, text="GAME OVER", fill="red", font=('Helvetica 50 bold'))
+        sleep(20)
+        print(timer_label)
+        exit()
+    if canvas.coords(hero)[0] == canvas.coords(shoot1)[2]:
+        hearts_num -= 1
+    if canvas.coords(hero)[0] == canvas.coords(shoot2)[2]:
+        hearts_num -= 1
+    if canvas.coords(hero)[0] == canvas.coords(shoot3)[2]:
+        hearts_num -= 1
+    if canvas.coords(hero)[0] == canvas.coords(shoot4)[2]:
+        hearts_num -= 1
+    if canvas.coords(hero)[0] == canvas.coords(shoot5)[2]:
+        hearts_num -= 1
+    if canvas.coords(hero)[0] == canvas.coords(shoot6)[2]:
+        hearts_num -= 1
+    if canvas.coords(hero)[0] == canvas.coords(shoot7)[2]:
+        hearts_num -= 1
+    if canvas.coords(hero)[0] == canvas.coords(shoot8)[2]:
+        hearts_num -= 1
+    if canvas.coords(hero)[0] == canvas.coords(shoot9)[2]:
+        hearts_num -= 1
+    if canvas.coords(hero)[0] == canvas.coords(shoot1)[2]:
+        hearts_num -= 1
+    if canvas.coords(hero)[1] == canvas.coords(shootv1)[3]:
+        hearts_num -= 1
+    if canvas.coords(hero)[1] == canvas.coords(shootv2)[3]:
+        hearts_num -= 1
+    if canvas.coords(hero)[1] == canvas.coords(shootv3)[3]:
+        hearts_num -= 1
+    if canvas.coords(hero)[1] == canvas.coords(shootv4)[3]:
+        hearts_num -= 1
+    if canvas.coords(hero)[1] == canvas.coords(shootv5)[3]:
+        hearts_num -= 1
+    if canvas.coords(hero)[1] == canvas.coords(shootv6)[3]:
+        hearts_num -= 1
+    if canvas.coords(hero)[1] == canvas.coords(shootv7)[3]:
+        hearts_num -= 1
+    if canvas.coords(hero)[1] == canvas.coords(shootv8)[3]:
+        hearts_num -= 1
+    if canvas.coords(hero)[1] == canvas.coords(shootv9)[3]:
+        hearts_num -= 1
+    if canvas.coords(hero)[1] == canvas.coords(shootv10)[3]:
+        hearts_num -= 1
+    if canvas.coords(hero)[1] == canvas.coords(shootv11)[3]:
+        hearts_num -= 1
+    if canvas.coords(hero)[1] == canvas.coords(shootv12)[3]:
+        hearts_num -= 1
+    canvas.after(1, check_collision())
 
 
 # hero
