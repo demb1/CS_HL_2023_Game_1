@@ -349,7 +349,7 @@ def collision_checker():
         shoot_x_bbox = canvas.bbox(shoot_x)
         pos_shoot_x = canvas.coords(shoot_x_bbox)
         if pos_shoot_x in canvas.find_overlapping(pos[0], pos[1], pos[2], pos[3]):
-            collision = Truea
+            collision = True
 
 
 def collision_true():
@@ -360,13 +360,13 @@ def collision_true():
 
 # cords exit rule
 def coordsexit():
-    if canvas.coords(hero)[0] > 785:
+    if canvas.coords(hero)[0] > 760:
         exit(0)
-    elif canvas.coords(hero)[0] < 20:
+    elif canvas.coords(hero)[0] < 0:
         exit(0)
     elif canvas.coords(hero)[1] > 480:
         exit(0)
-    elif canvas.coords(hero)[1] < 20:
+    elif canvas.coords(hero)[1] < 0:
         exit(0)
 
 
