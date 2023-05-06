@@ -338,21 +338,24 @@ hearts_label = Label(app)
 hearts_label.place(x=55, y=10)
 hearts_label.config(text=hearts_num)
 
+collision = False
+hero_bbox = canvas.bbox(hero)
+
 # collision checker
 def collision_checker():
     for i in range(len(shoots)):
-        shootx = shoots[i]
-        x1, y1, x2, y2 = canvas.coords(hero)
-        x3, y3, x4, y4 = canvas.coords(shootx)
-    dx = x1 - x3
-    dy = y1 - y3
+        shoot_x = shoots[i]
+        pos = canvas.coords(hero_bbox)
+        shoot_x_bbox = canvas.bbox(shoot_x)
+        pos_shoot_x = canvas.coords(shoot_x_bbox)
+        if pos_shoot_x in canvas.find_overlapping(pos[0], pos[1], pos[2], pos[3]):
+            collision = Truea
 
 
-    pos = canvas.coords(hero)
-    pos_shoot1 = canvas.coords(shoot1)
-    if pos_shoot1 in canvas.find_overlapping(pos[0], pos[1], pos[2], pos[3]):
+def collision_true():
+    if collision:
         update_hearts()
-        print(pos, pos_shoot1)
+        print("Works!!!")
 
 
 # cords exit rule
@@ -365,6 +368,11 @@ def coordsexit():
         exit(0)
     elif canvas.coords(hero)[1] < 20:
         exit(0)
+
+
+def run_collision_checker():
+    collision_checker()
+    canvas.after(1, run_collision_checker)
 
 
 # hero movement

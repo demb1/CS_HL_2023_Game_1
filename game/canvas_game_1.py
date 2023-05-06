@@ -319,7 +319,7 @@ canvas.after(3, move_shoots)
 
 
 # hearts
-def update_hearts(check):
+def update_hearts():
     global hearts_num
     if hearts_num == 0:
         canvas.create_text(400, 250, text="GAME OVER", fill="red", font=('Helvetica 50 bold'))
@@ -336,16 +336,13 @@ hearts_label = Label(app)
 hearts_label.place(x=55, y=10)
 hearts_label.config(text=hearts_num)
 
+
 # collision checker
-def collision_checker(check):
-    pos = canvas.coords(hero)
-    pos_shoot1 = canvas.coords(shoot1)
-    x2_shoot1 = pos_shoot1[0] + 34
-    y2_shoot1 = pos_shoot1[1] + 24
-    w, h = hero.width(), hero.height()
-    pos_total_shoot1 = [pos_shoot1[0], pos_shoot1[1], x2_shoot1, y2_shoot1]
-    if pos_total_shoot1 in canvas.find_overlapping(pos[0], pos[1], pos[0] + 50, pos[1] + 50):
-        update_hearts(check)
+def collision_checker():
+    pos = canvas.coords(canvas.bbox(hero))
+    pos_shoot1 = canvas.coords(canvas.bbox(shoot1))
+    if pos_shoot1 in canvas.find_overlapping(pos[0], pos[1], pos[2], pos[3]):
+        update_hearts()
 
 
 # cords exit rule
