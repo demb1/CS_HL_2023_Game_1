@@ -2,7 +2,6 @@ import random
 from tkinter import *
 from PIL import ImageTk, Image
 from time import *
-import pygame
 
 app = Tk()
 canvas = Canvas(app, width=800, height=500)
@@ -14,6 +13,7 @@ app.title('Run away game version 1.2.1')
 frameCnt = 3
 frames = [PhotoImage(file='gun_gif_1.gif', format='gif -index %i' % i) for i in range(frameCnt)]
 frames2 = [PhotoImage(file='gun_gif_2.gif', format='gif -index %i' % i) for i in range(frameCnt)]
+
 
 def update1(ind):
     frame = frames[ind]
@@ -129,11 +129,13 @@ gunHorizontal12_label.pack()
 gunHorizontal12_label.place(x=730, y=0)
 app.after(0, update1, 0)
 
+
 # timer
 def update_timer(seconds):
     minutes = seconds // 60
     seconds = seconds % 60
     timer_label.config(text="{:02d}:{:02d}".format(minutes, seconds))
+
 
 def start_timer(seconds):
     if seconds == 360:
@@ -141,6 +143,7 @@ def start_timer(seconds):
     else:
         update_timer(seconds)
         canvas.after(1000, start_timer, seconds+1)
+
 
 timer_label = Label(app, text="00:00")
 timer_label.place(x=750, y=10)
@@ -209,11 +212,11 @@ shootv10 = canvas.create_image(623, c10, image=shoot_vertical_img)
 shootv11 = canvas.create_image(683, c11, image=shoot_vertical_img)
 shootv12 = canvas.create_image(743, c12, image=shoot_vertical_img)
 
-shoots = [shoot1, shoot2, shoot3, shoot4, shoot5, shoot6, shoot7, shoot8, shoot9, shootv1, shootv2, shootv3, shootv4,
-          shootv5, shootv6, shootv7, shootv8, shootv9, shootv10, shootv11, shootv12]
 
 yspeed = 1
 xspeed = 1
+
+
 def move_shoots():
     global xspeed
     global yspeed
@@ -306,11 +309,8 @@ def move_shoots():
 
 canvas.after(3, move_shoots)
 
+
 # hearts
-hearts_num = 5
-hearts_label = Label(app)
-hearts_label.place(x=55, y=10)
-hearts_label.config(text=hearts_num)
 def update_hearts():
     global hearts_num
     if hearts_num == 0:
@@ -321,6 +321,13 @@ def update_hearts():
     hearts_num -= 1
     hearts_label.config(text=hearts_num)
     print(hearts_num)
+
+
+hearts_num = 5
+hearts_label = Label(app)
+hearts_label.place(x=55, y=10)
+hearts_label.config(text=hearts_num)
+
 
 # collision checker
 def collision_checker():
@@ -343,13 +350,14 @@ def collision_checker():
         update_hearts()
     if canvas.coords(hero)[0] < canvas.coords(shoot9)[0] + 50 and canvas.coords(hero)[0] + 34 > canvas.coords(shoot9)[0] and canvas.coords(hero)[1] < canvas.coords(shoot9)[1] + 50 and 24 + canvas.coords(hero)[1] > canvas.coords(shoot9)[1]:
         update_hearts()
-    canvas.after(1, collision_checker)
+
 
 # hero
 image = Image.open("mario.png")
 resize_hero = image.resize((50, 50))
 mario_img = ImageTk.PhotoImage(resize_hero)
 hero = canvas.create_image(400, 250, image=mario_img)
+
 
 # cords exit rule
 def coordsexit():
@@ -361,6 +369,7 @@ def coordsexit():
         exit(0)
     elif canvas.coords(hero)[1] < 20:
         exit(0)
+
 
 # hero movement
 def anymove(event):
