@@ -2,6 +2,7 @@ import random
 from tkinter import *
 from PIL import ImageTk, Image
 from time import *
+import math
 
 
 app = Tk()
@@ -11,10 +12,7 @@ app.bind()
 app.title('Run away game version 1.2.1')
 
 # hero
-image = Image.open("mario.png")
-resize_hero = image.resize((50, 50))
-mario_img = ImageTk.PhotoImage(resize_hero)
-hero = canvas.create_image(400, 250, image=mario_img)
+hero = canvas.create_oval(400, 250, 400 + 40, 250 + 40, fill="blue", outline="red")
 
 
 # guns
@@ -193,37 +191,40 @@ c12 = random.randint(-800, 0)
 shoot = Image.open("shoot.png")
 resize_shoot = shoot.resize((34, 24))
 shoot_img = ImageTk.PhotoImage(resize_shoot)
-shoot1 = canvas.create_oval(g1, 112, g1 + 40, 112 + 40, fill="red")
-shoot2 = canvas.create_oval(g2, 162, g2 + 40, 162 + 40, fill="red")
-shoot3 = canvas.create_oval(g3, 212, g3 + 40, 212 + 40, fill="red")
-shoot4 = canvas.create_oval(g4, 262, g4 + 40, 262 + 40, fill="red")
-shoot5 = canvas.create_oval(g5, 312, g5 + 40, 312 + 40, fill="red")
-shoot6 = canvas.create_oval(g6, 362, g6 + 40, 362 + 40, fill="red")
-shoot7 = canvas.create_oval(g7, 412, g7 + 40, 412 + 40, fill="red")
-shoot8 = canvas.create_oval(g8, 462, g8 + 40, 462 + 40, fill="red")
-shoot9 = canvas.create_oval(g9, 62, g9 + 40, 62 + 40, fill="red")
+shoot1 = canvas.create_oval(g1, 100, g1 + 25, 100 + 25, fill="red")
+shoot2 = canvas.create_oval(g2, 150, g2 + 25, 150 + 25, fill="red")
+shoot3 = canvas.create_oval(g3, 200, g3 + 25, 200 + 25, fill="red")
+shoot4 = canvas.create_oval(g4, 250, g4 + 25, 250 + 25, fill="red")
+shoot5 = canvas.create_oval(g5, 300, g5 + 25, 300 + 25, fill="red")
+shoot6 = canvas.create_oval(g6, 350, g6 + 25, 350 + 25, fill="red")
+shoot7 = canvas.create_oval(g7, 400, g7 + 25, 400 + 25, fill="red")
+shoot8 = canvas.create_oval(g8, 450, g8 + 25, 450 + 25, fill="red")
+shoot9 = canvas.create_oval(g9, 50, g9 + 25, 50 + 25, fill="red")
 
 
 # shoots vertical
 shoot = Image.open("shoot_vertical.png")
 resize_shoot_vertical = shoot.resize((24, 34))
 shoot_vertical_img = ImageTk.PhotoImage(resize_shoot_vertical)
-shootv1 = canvas.create_oval(83, c1, 83 + 40, c1 + 40, fill="red")
-shootv2 = canvas.create_oval(143, c2, 143 + 40, c2 + 40, fill="red")
-shootv3 = canvas.create_oval(203, c3, 203 + 40, c3 + 40, fill="red")
-shootv4 = canvas.create_oval(263, c4, 263 + 40, c4 + 40, fill="red")
-shootv5 = canvas.create_oval(323, c5, 323 + 40, c5 + 40, fill="red")
-shootv6 = canvas.create_oval(383, c6, 383 + 40, c6 + 40, fill="red")
-shootv7 = canvas.create_oval(443, c7, 443 + 40, c7 + 40, fill="red")
-shootv8 = canvas.create_oval(503, c8, 503 + 40, c8 + 40, fill="red")
-shootv9 = canvas.create_oval(563, c9, 563 + 40, c9 + 40, fill="red")
-shootv10 = canvas.create_oval(623, c10, 623 + 40, c10 + 40, fill="red")
-shootv11 = canvas.create_oval(683, c11, 683 + 40, c11 + 40, fill="red")
-shootv12 = canvas.create_oval(743, c12, 743 + 40, c12 + 40, fill="red")
+shootv1 = canvas.create_oval(70, c1, 70 + 25, c1 + 25, fill="red")
+shootv2 = canvas.create_oval(130, c2, 130 + 25, c2 + 25, fill="red")
+shootv3 = canvas.create_oval(190, c3, 190 + 25, c3 + 25, fill="red")
+shootv4 = canvas.create_oval(250, c4, 250 + 25, c4 + 25, fill="red")
+shootv5 = canvas.create_oval(310, c5, 310 + 25, c5 + 25, fill="red")
+shootv6 = canvas.create_oval(370, c6, 370 + 25, c6 + 25, fill="red")
+shootv7 = canvas.create_oval(430, c7, 430 + 25, c7 + 25, fill="red")
+shootv8 = canvas.create_oval(490, c8, 490 + 25, c8 + 25, fill="red")
+shootv9 = canvas.create_oval(550, c9, 550 + 25, c9 + 25, fill="red")
+shootv10 = canvas.create_oval(610, c10, 610 + 25, c10 + 25, fill="red")
+shootv11 = canvas.create_oval(670, c11, 670 + 25, c11 + 25, fill="red")
+shootv12 = canvas.create_oval(730, c12, 730 + 25, c12 + 25, fill="red")
 
 
 yspeed = 1
 xspeed = 1
+
+shoots = [shoot1, shoot2, shoot3, shoot4, shoot5, shoot6, shoot7, shoot8, shoot9, shootv1, shootv2, shootv3, shootv4,
+          shootv5, shootv6, shootv7, shootv8, shootv9, shootv10, shootv11, shootv12]
 
 
 def move_shoots():
@@ -320,7 +321,7 @@ canvas.after(3, move_shoots)
 
 
 # hearts
-def update_hearts(check):
+def update_hearts():
     global hearts_num
     if hearts_num == 0:
         canvas.create_text(400, 250, text="GAME OVER", fill="red", font=('Helvetica 50 bold'))
@@ -338,11 +339,20 @@ hearts_label.place(x=55, y=10)
 hearts_label.config(text=hearts_num)
 
 # collision checker
-def collision_checker(check):
+def collision_checker():
+    for i in range(len(shoots)):
+        shootx = shoots[i]
+        x1, y1, x2, y2 = canvas.coords(hero)
+        x3, y3, x4, y4 = canvas.coords(shootx)
+    dx = x1 - x3
+    dy = y1 - y3
+
+
     pos = canvas.coords(hero)
     pos_shoot1 = canvas.coords(shoot1)
     if pos_shoot1 in canvas.find_overlapping(pos[0], pos[1], pos[2], pos[3]):
-        update_hearts(check)
+        update_hearts()
+        print(pos, pos_shoot1)
 
 
 # cords exit rule
