@@ -193,32 +193,33 @@ c12 = random.randint(-800, 0)
 shoot = Image.open("shoot.png")
 resize_shoot = shoot.resize((34, 24))
 shoot_img = ImageTk.PhotoImage(resize_shoot)
-shoot1 = canvas.create_image(g1, 112, image=shoot_img)
-shoot2 = canvas.create_image(g2, 162, image=shoot_img)
-shoot3 = canvas.create_image(g3, 212, image=shoot_img)
-shoot4 = canvas.create_image(g4, 262, image=shoot_img)
-shoot5 = canvas.create_image(g5, 312, image=shoot_img)
-shoot6 = canvas.create_image(g6, 362, image=shoot_img)
-shoot7 = canvas.create_image(g7, 412, image=shoot_img)
-shoot8 = canvas.create_image(g8, 462, image=shoot_img)
-shoot9 = canvas.create_image(g9, 62, image=shoot_img)
+shoot1 = canvas.create_oval(g1, 112, g1 + 40, 112 + 40, fill="red")
+shoot2 = canvas.create_oval(g2, 162, g2 + 40, 162 + 40, fill="red")
+shoot3 = canvas.create_oval(g3, 212, g3 + 40, 212 + 40, fill="red")
+shoot4 = canvas.create_oval(g4, 262, g4 + 40, 262 + 40, fill="red")
+shoot5 = canvas.create_oval(g5, 312, g5 + 40, 312 + 40, fill="red")
+shoot6 = canvas.create_oval(g6, 362, g6 + 40, 362 + 40, fill="red")
+shoot7 = canvas.create_oval(g7, 412, g7 + 40, 412 + 40, fill="red")
+shoot8 = canvas.create_oval(g8, 462, g8 + 40, 462 + 40, fill="red")
+shoot9 = canvas.create_oval(g9, 62, g9 + 40, 62 + 40, fill="red")
+
 
 # shoots vertical
 shoot = Image.open("shoot_vertical.png")
 resize_shoot_vertical = shoot.resize((24, 34))
 shoot_vertical_img = ImageTk.PhotoImage(resize_shoot_vertical)
-shootv1 = canvas.create_image(83, c1, image=shoot_vertical_img)
-shootv2 = canvas.create_image(143, c2, image=shoot_vertical_img)
-shootv3 = canvas.create_image(203, c3, image=shoot_vertical_img)
-shootv4 = canvas.create_image(263, c4, image=shoot_vertical_img)
-shootv5 = canvas.create_image(323, c5, image=shoot_vertical_img)
-shootv6 = canvas.create_image(383, c6, image=shoot_vertical_img)
-shootv7 = canvas.create_image(443, c7, image=shoot_vertical_img)
-shootv8 = canvas.create_image(503, c8, image=shoot_vertical_img)
-shootv9 = canvas.create_image(563, c9, image=shoot_vertical_img)
-shootv10 = canvas.create_image(623, c10, image=shoot_vertical_img)
-shootv11 = canvas.create_image(683, c11, image=shoot_vertical_img)
-shootv12 = canvas.create_image(743, c12, image=shoot_vertical_img)
+shootv1 = canvas.create_oval(83, c1, 83 + 40, c1 + 40, fill="red")
+shootv2 = canvas.create_oval(143, c2, 143 + 40, c2 + 40, fill="red")
+shootv3 = canvas.create_oval(203, c3, 203 + 40, c3 + 40, fill="red")
+shootv4 = canvas.create_oval(263, c4, 263 + 40, c4 + 40, fill="red")
+shootv5 = canvas.create_oval(323, c5, 323 + 40, c5 + 40, fill="red")
+shootv6 = canvas.create_oval(383, c6, 383 + 40, c6 + 40, fill="red")
+shootv7 = canvas.create_oval(443, c7, 443 + 40, c7 + 40, fill="red")
+shootv8 = canvas.create_oval(503, c8, 503 + 40, c8 + 40, fill="red")
+shootv9 = canvas.create_oval(563, c9, 563 + 40, c9 + 40, fill="red")
+shootv10 = canvas.create_oval(623, c10, 623 + 40, c10 + 40, fill="red")
+shootv11 = canvas.create_oval(683, c11, 683 + 40, c11 + 40, fill="red")
+shootv12 = canvas.create_oval(743, c12, 743 + 40, c12 + 40, fill="red")
 
 
 yspeed = 1
@@ -340,11 +341,7 @@ hearts_label.config(text=hearts_num)
 def collision_checker(check):
     pos = canvas.coords(hero)
     pos_shoot1 = canvas.coords(shoot1)
-    x2_shoot1 = pos_shoot1[0] + 34
-    y2_shoot1 = pos_shoot1[1] + 24
-    w, h = hero.width(), hero.height()
-    pos_total_shoot1 = [pos_shoot1[0], pos_shoot1[1], x2_shoot1, y2_shoot1]
-    if pos_total_shoot1 in canvas.find_overlapping(pos[0], pos[1], pos[0] + 50, pos[1] + 50):
+    if pos_shoot1 in canvas.find_overlapping(pos[0], pos[1], pos[2], pos[3]):
         update_hearts(check)
 
 
