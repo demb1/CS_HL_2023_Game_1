@@ -334,13 +334,12 @@ canvas.after(3, move_shoots)
 def update_hearts():
     global hearts_num
     if hearts_num == 0:
-        canvas.create_text(400, 250, text="GAME OVER", fill="red", font=('Helvetica 50 bold'))
-        sleep(20)
+        sleep(5)
         print(timer_label)
         exit()
     hearts_num -= 1
     hearts_label.config(text=hearts_num)
-    print(hearts_num)
+    print("The heart number remaining: ", hearts_num)
 
 
 hearts_num = 5
