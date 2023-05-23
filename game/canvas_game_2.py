@@ -2,7 +2,7 @@ import random
 from tkinter import *
 from PIL import ImageTk, Image
 from time import *
-import math
+from math import *
 
 
 app = Tk()
@@ -228,8 +228,7 @@ shoots = [shoot1, shoot2, shoot3, shoot4, shoot5, shoot6, shoot7, shoot8, shoot9
 
 
 def move_shoots():
-    global xspeed
-    global yspeed
+    global pos, yspeed, xspeed
     if canvas.coords(shoot1)[0] > 800:
         canvas.move(shoot1, random.randint(-1800, -900), 0)
     else:
@@ -314,6 +313,17 @@ def move_shoots():
         canvas.move(shootv12, 0, random.randint(-1800, -900))
     else:
         canvas.move(shootv12, 0, yspeed)
+    for i in range(len(shoots)):
+        shoot_x = shoots[i]
+        x1, y1, x2, y2 = canvas.coords(shoot_x)
+        x3 = pos[0]
+        y3 = pos[1]
+        x4 = pos[2]
+        y4 = pos[3]
+        dx = x1 - x3
+        dy = y1 - y3
+        if sqrt(dx * dx + dy * dy) < 25 + 40:
+            update_hearts()
     canvas.after(3, move_shoots)
 
 
@@ -338,25 +348,6 @@ hearts_label = Label(app)
 hearts_label.place(x=55, y=10)
 hearts_label.config(text=hearts_num)
 
-collision = False
-hero_bbox = canvas.bbox(hero)
-
-# collision checker
-def collision_checker():
-    for i in range(len(shoots)):
-        shoot_x = shoots[i]
-        pos = canvas.coords(hero_bbox)
-        shoot_x_bbox = canvas.bbox(shoot_x)
-        pos_shoot_x = canvas.coords(shoot_x_bbox)
-        if pos_shoot_x in canvas.find_overlapping(pos[0], pos[1], pos[2], pos[3]):
-            collision = True
-
-
-def collision_true():
-    if collision:
-        update_hearts()
-        print("Works!!!")
-
 
 # cords exit rule
 def coordsexit():
@@ -370,26 +361,28 @@ def coordsexit():
         exit(0)
 
 
-def run_collision_checker():
-    collision_checker()
-    canvas.after(1, run_collision_checker)
+pos = canvas.coords(hero)
 
 
 # hero movement
 def anymove(event):
+    global pos
     if event.char == "a":
         canvas.move(hero, -20, 0)
+        pos = canvas.coords(hero)
         coordsexit()
     elif event.char == "d":
         canvas.move(hero, 20, 0)
+        pos = canvas.coords(hero)
         coordsexit()
     elif event.char == "s":
         canvas.move(hero, 0, 20)
+        pos = canvas.coords(hero)
         coordsexit()
     elif event.char == "w":
         canvas.move(hero, 0, -20)
+        pos = canvas.coords(hero)
         coordsexit()
-    collision_checker()
 
 
 app.bind("<Key>", anymove)

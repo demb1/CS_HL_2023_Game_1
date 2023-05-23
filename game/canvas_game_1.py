@@ -228,90 +228,135 @@ xspeed = 1
 def move_shoots():
     global xspeed
     global yspeed
+    global pos
     if canvas.coords(shoot1)[0] > 800:
         canvas.move(shoot1, random.randint(-1800, -900), 0)
+        pos_shoot1 = canvas.coords(canvas.bbox(shoot1))
+        if pos_shoot1 in canvas.find_overlapping(pos[0], pos[1], pos[2], pos[3]):
+            update_hearts()
     else:
         canvas.move(shoot1, xspeed, 0)
+        pos_shoot1 = canvas.coords(canvas.bbox(shoot1))
     if canvas.coords(shoot2)[0] > 800:
         canvas.move(shoot2, random.randint(-1800, -900), 0)
+        pos_shoot2 = canvas.coords(canvas.bbox(shoot2))
     else:
         canvas.move(shoot2, xspeed, 0)
+        pos_shoot2 = canvas.coords(canvas.bbox(shoot2))
     if canvas.coords(shoot3)[0] > 800:
         canvas.move(shoot3, random.randint(-1800, -900), 0)
+        pos_shoot3 = canvas.coords(canvas.bbox(shoot3))
     else:
         canvas.move(shoot3, xspeed, 0)
+        pos_shoot3 = canvas.coords(canvas.bbox(shoot3))
     if canvas.coords(shoot4)[0] > 800:
         canvas.move(shoot4, random.randint(-1800, -900), 0)
+        pos_shoot4 = canvas.coords(canvas.bbox(shoot4))
     else:
         canvas.move(shoot4, xspeed, 0)
+        pos_shoot4 = canvas.coords(canvas.bbox(shoot4))
     if canvas.coords(shoot5)[0] > 800:
         canvas.move(shoot5, random.randint(-1800, -900), 0)
+        pos_shoot5 = canvas.coords(canvas.bbox(shoot5))
     else:
         canvas.move(shoot5, xspeed, 0)
+        pos_shoot5 = canvas.coords(canvas.bbox(shoot5))
     if canvas.coords(shoot6)[0] > 800:
         canvas.move(shoot6, random.randint(-1800, -900), 0)
+        pos_shoot6 = canvas.coords(canvas.bbox(shoot6))
     else:
         canvas.move(shoot6, xspeed, 0)
+        pos_shoot6 = canvas.coords(canvas.bbox(shoot6))
     if canvas.coords(shoot7)[0] > 800:
         canvas.move(shoot7, random.randint(-1800, -900), 0)
+        pos_shoot7 = canvas.coords(canvas.bbox(shoot7))
     else:
         canvas.move(shoot7, xspeed, 0)
+        pos_shoot7 = canvas.coords(canvas.bbox(shoot7))
     if canvas.coords(shoot8)[0] > 800:
         canvas.move(shoot8, random.randint(-1800, -900), 0)
+        pos_shoot8 = canvas.coords(canvas.bbox(shoot8))
     else:
         canvas.move(shoot8, xspeed, 0)
+        pos_shoot8 = canvas.coords(canvas.bbox(shoot8))
     if canvas.coords(shoot9)[0] > 800:
         canvas.move(shoot9, random.randint(-1800, -900), 0)
+        pos_shoot9 = canvas.coords(canvas.bbox(shoot9))
     else:
         canvas.move(shoot9, xspeed, 0)
+        pos_shoot9 = canvas.coords(canvas.bbox(shoot9))
     if canvas.coords(shootv1)[1] > 500:
         canvas.move(shootv1, 0, random.randint(-1800, -900))
+        pos_shootv1 = canvas.coords(canvas.bbox(shootv1))
     else:
         canvas.move(shootv1, 0, yspeed)
+        pos_shootv1 = canvas.coords(canvas.bbox(shootv1))
     if canvas.coords(shootv2)[1] > 500:
         canvas.move(shootv2, 0, random.randint(-1800, -900))
+        pos_shootv2 = canvas.coords(canvas.bbox(shootv2))
     else:
         canvas.move(shootv2, 0, yspeed)
+        pos_shootv2 = canvas.coords(canvas.bbox(shootv2))
     if canvas.coords(shootv3)[1] > 500:
         canvas.move(shootv3, 0, random.randint(-1800, -900))
+        pos_shootv3 = canvas.coords(canvas.bbox(shootv3))
     else:
         canvas.move(shootv3, 0, yspeed)
+        pos_shootv3 = canvas.coords(canvas.bbox(shootv3))
     if canvas.coords(shootv4)[1] > 500:
         canvas.move(shootv4, 0, random.randint(-1800, -900))
+        pos_shootv4 = canvas.coords(canvas.bbox(shootv4))
     else:
         canvas.move(shootv4, 0, yspeed)
+        pos_shootv4 = canvas.coords(canvas.bbox(shootv4))
     if canvas.coords(shootv5)[1] > 500:
         canvas.move(shootv5, 0, random.randint(-1800, -900))
+        pos_shootv5 = canvas.coords(canvas.bbox(shootv5))
     else:
         canvas.move(shootv5, 0, yspeed)
+        pos_shootv5 = canvas.coords(canvas.bbox(shootv5))
     if canvas.coords(shootv6)[1] > 500:
         canvas.move(shootv6, 0, random.randint(-1800, -900))
+        pos_shootv6 = canvas.coords(canvas.bbox(shootv6))
     else:
         canvas.move(shootv6, 0, yspeed)
+        pos_shootv6 = canvas.coords(canvas.bbox(shootv6))
     if canvas.coords(shootv7)[1] > 500:
         canvas.move(shootv7, 0, random.randint(-1800, -900))
+        pos_shootv7 = canvas.coords(canvas.bbox(shootv7))
     else:
         canvas.move(shootv7, 0, yspeed)
+        pos_shootv7 = canvas.coords(canvas.bbox(shootv7))
     if canvas.coords(shootv8)[1] > 500:
         canvas.move(shootv8, 0, random.randint(-1800, -900))
+        pos_shootv8 = canvas.coords(canvas.bbox(shootv8))
     else:
         canvas.move(shootv8, 0, yspeed)
+        pos_shootv8 = canvas.coords(canvas.bbox(shootv8))
     if canvas.coords(shootv9)[1] > 500:
         canvas.move(shootv9, 0, random.randint(-1800, -900))
+        pos_shootv9 = canvas.coords(canvas.bbox(shootv9))
     else:
         canvas.move(shootv9, 0, yspeed)
+        pos_shootv9 = canvas.coords(canvas.bbox(shootv9))
     if canvas.coords(shootv10)[1] > 500:
         canvas.move(shootv10, 0, random.randint(-1800, -900))
+        pos_shootv10 = canvas.coords(canvas.bbox(shootv10))
     else:
         canvas.move(shootv10, 0, yspeed)
+        pos_shootv10 = canvas.coords(canvas.bbox(shootv10))
     if canvas.coords(shootv11)[1] > 500:
         canvas.move(shootv11, 0, random.randint(-1800, -900))
+        pos_shootv11 = canvas.coords(canvas.bbox(shootv11))
     else:
         canvas.move(shootv11, 0, yspeed)
+        pos_shootv11 = canvas.coords(canvas.bbox(shootv11))
     if canvas.coords(shootv12)[1] > 500:
         canvas.move(shootv12, 0, random.randint(-1800, -900))
+        pos_shootv12 = canvas.coords(canvas.bbox(shootv12))
     else:
         canvas.move(shootv12, 0, yspeed)
+        pos_shootv12 = canvas.coords(canvas.bbox(shootv12))
     canvas.after(3, move_shoots)
 
 
@@ -337,14 +382,6 @@ hearts_label.place(x=55, y=10)
 hearts_label.config(text=hearts_num)
 
 
-# collision checker
-def collision_checker():
-    pos = canvas.coords(canvas.bbox(hero))
-    pos_shoot1 = canvas.coords(canvas.bbox(shoot1))
-    if pos_shoot1 in canvas.find_overlapping(pos[0], pos[1], pos[2], pos[3]):
-        update_hearts()
-
-
 # cords exit rule
 def coordsexit():
     if canvas.coords(hero)[0] > 785:
@@ -356,22 +393,27 @@ def coordsexit():
     elif canvas.coords(hero)[1] < 20:
         exit(0)
 
+pos = canvas.coords(canvas.bbox(hero))
 
 # hero movement
 def anymove(event):
+    global pos
     if event.char == "a":
         canvas.move(hero, -20, 0)
+        pos = canvas.coords(canvas.bbox(hero))
         coordsexit()
     elif event.char == "d":
         canvas.move(hero, 20, 0)
+        pos = canvas.coords(canvas.bbox(hero))
         coordsexit()
     elif event.char == "s":
         canvas.move(hero, 0, 20)
+        pos = canvas.coords(canvas.bbox(hero))
         coordsexit()
     elif event.char == "w":
         canvas.move(hero, 0, -20)
+        pos = canvas.coords(canvas.bbox(hero))
         coordsexit()
-    collision_checker()
 
 
 app.bind("<Key>", anymove)
