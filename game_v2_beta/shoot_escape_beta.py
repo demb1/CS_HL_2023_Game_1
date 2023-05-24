@@ -8,10 +8,10 @@ app = Tk()
 canvas = Canvas(app, width=800, height=500)
 canvas.pack()
 app.bind()
-app.title('Run away game version 1.2.1')
+app.title('Run away game_main version 1.2.1')
 
 # hero
-image = Image.open("mario.png")
+image = Image.open("../game_main/mario.png")
 resize_hero = image.resize((50, 50))
 mario_img = ImageTk.PhotoImage(resize_hero)
 hero = canvas.create_image(400, 250, image=mario_img)
@@ -19,8 +19,8 @@ hero = canvas.create_image(400, 250, image=mario_img)
 
 # guns
 frameCnt = 3
-frames = [PhotoImage(file='gun_gif_1.gif', format='gif -index %i' % i) for i in range(frameCnt)]
-frames2 = [PhotoImage(file='gun_gif_2.gif', format='gif -index %i' % i) for i in range(frameCnt)]
+frames = [PhotoImage(file='../game_main/gun_gif_1.gif', format='gif -index %i' % i) for i in range(frameCnt)]
+frames2 = [PhotoImage(file='../game_main/gun_gif_2.gif', format='gif -index %i' % i) for i in range(frameCnt)]
 
 
 def update1(ind):
@@ -159,7 +159,7 @@ timer_label.place(x=750, y=10)
 start_timer(0)
 
 # display heart
-heart = Image.open("heart.png")
+heart = Image.open("../game_main/heart.png")
 resize_heart = heart.resize((40, 40))
 heart_img = ImageTk.PhotoImage(resize_heart)
 heartDisplay = canvas.create_image(25, 25, image=heart_img)
@@ -190,7 +190,7 @@ c11 = random.randint(-800, 0)
 c12 = random.randint(-800, 0)
 
 # shoots horizontal
-shoot = Image.open("shoot.png")
+shoot = Image.open("../game_main/shoot.png")
 resize_shoot = shoot.resize((34, 24))
 shoot_img = ImageTk.PhotoImage(resize_shoot)
 shoot1 = canvas.create_image(g1, 112, image=shoot_img)
@@ -204,7 +204,7 @@ shoot8 = canvas.create_image(g8, 462, image=shoot_img)
 shoot9 = canvas.create_image(g9, 62, image=shoot_img)
 
 # shoots vertical
-shoot = Image.open("shoot_vertical.png")
+shoot = Image.open("../game_main/shoot_vertical.png")
 resize_shoot_vertical = shoot.resize((24, 34))
 shoot_vertical_img = ImageTk.PhotoImage(resize_shoot_vertical)
 shootv1 = canvas.create_image(83, c1, image=shoot_vertical_img)

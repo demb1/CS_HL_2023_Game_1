@@ -8,7 +8,7 @@ app = Tk()
 canvas = Canvas(app, width=800, height=500)
 canvas.pack()
 app.bind()
-app.title('Run away game version 1.3.0')
+app.title('Run away game_main version 1.4.0')
 
 # difficulty settings input
 print("hard - 1")
@@ -20,7 +20,7 @@ yspeed = int
 xspeed = int
 hearts_num = 10
 
-# difficulty setting in game
+# difficulty setting in game_main
 x = int(input("Enter your difficulty number: "))
 if x == 1:
     yspeed = 2
