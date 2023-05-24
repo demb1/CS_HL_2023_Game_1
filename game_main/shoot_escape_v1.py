@@ -560,7 +560,7 @@ def update_hearts():
         print()
         print("Game over")
         print()
-        print("Time played was:", end_time, "s")
+        print("Time played:", end_time, "s")
         sleep(3)
         exit()
     print("The heart number remaining: ", hearts_num)
