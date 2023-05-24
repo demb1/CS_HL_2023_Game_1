@@ -4,12 +4,38 @@ from PIL import ImageTk, Image
 from time import *
 from math import *
 
-
 app = Tk()
 canvas = Canvas(app, width=800, height=500)
 canvas.pack()
 app.bind()
-app.title('Run away game version 1.2.1')
+app.title('Run away game version 1.3.0')
+
+# difficulty settings input
+print("hard - 1")
+print("medium - 2")
+print("easy - 3")
+
+# speed and health number
+yspeed = int
+xspeed = int
+hearts_num = 10
+
+# difficulty setting in game
+x = int(input("Enter your difficulty number: "))
+if x == 1:
+    yspeed = 2
+    xspeed = 2
+    hearts_num = 40
+
+if x == 2:
+    yspeed = 1.5
+    xspeed = 1.5
+    hearts_num = 60
+
+if x == 3:
+    yspeed = 1.1
+    xspeed = 1.1
+    hearts_num = 80
 
 # hero
 hero = canvas.create_oval(400, 250, 400 + 40, 250 + 40, fill="blue", outline="red")
@@ -143,18 +169,23 @@ def update_timer(seconds):
     timer_label.config(text="{:02d}:{:02d}".format(minutes, seconds))
 
 
+end_time = -1
+
+
 def start_timer(seconds):
+    global end_time
     if seconds == 360:
         exit(0)
     else:
         update_timer(seconds)
         canvas.after(1000, start_timer, seconds+1)
+        end_time += 1
 
 
 timer_label = Label(app, text="00:00")
 timer_label.place(x=750, y=10)
-
 start_timer(0)
+
 
 # display heart
 heart = Image.open("heart.png")
@@ -220,131 +251,327 @@ shootv11 = canvas.create_oval(670, c11, 670 + 25, c11 + 25, fill="red")
 shootv12 = canvas.create_oval(730, c12, 730 + 25, c12 + 25, fill="red")
 
 
-yspeed = 1
-xspeed = 1
-
-shoots = [shoot1, shoot2, shoot3, shoot4, shoot5, shoot6, shoot7, shoot8, shoot9, shootv1, shootv2, shootv3, shootv4,
-          shootv5, shootv6, shootv7, shootv8, shootv9, shootv10, shootv11, shootv12]
-
-
 def move_shoots():
-    global pos, yspeed, xspeed
+    global pos, yspeed, xspeed, hearts_num
     if canvas.coords(shoot1)[0] > 800:
         canvas.move(shoot1, random.randint(-1800, -900), 0)
     else:
         canvas.move(shoot1, xspeed, 0)
+        x1, y1, x2, y2 = canvas.coords(shoot1)
+        x3 = pos[0]
+        y3 = pos[1]
+        dx = x1 - x3
+        dy = y1 - y3
+        if sqrt(dx * dx + dy * dy) < 30:
+            hearts_num -= random.randint(1, 10)
+            hearts_label.config(text=hearts_num)
+            update_hearts()
+            canvas.move(shoot1, random.randint(-1800, -900), 0)
     if canvas.coords(shoot2)[0] > 800:
         canvas.move(shoot2, random.randint(-1800, -900), 0)
     else:
         canvas.move(shoot2, xspeed, 0)
+        x1, y1, x2, y2 = canvas.coords(shoot2)
+        x3 = pos[0]
+        y3 = pos[1]
+        dx = x1 - x3
+        dy = y1 - y3
+        if sqrt(dx * dx + dy * dy) < 30:
+            hearts_num -= random.randint(1, 10)
+            hearts_label.config(text=hearts_num)
+            update_hearts()
+            canvas.move(shoot2, random.randint(-1800, -900), 0)
     if canvas.coords(shoot3)[0] > 800:
         canvas.move(shoot3, random.randint(-1800, -900), 0)
     else:
         canvas.move(shoot3, xspeed, 0)
+        x1, y1, x2, y2 = canvas.coords(shoot1)
+        x3 = pos[0]
+        y3 = pos[1]
+        dx = x1 - x3
+        dy = y1 - y3
+        if sqrt(dx * dx + dy * dy) < 30:
+            hearts_num -= random.randint(1, 10)
+            hearts_label.config(text=hearts_num)
+            update_hearts()
+            canvas.move(shoot3, random.randint(-1800, -900), 0)
     if canvas.coords(shoot4)[0] > 800:
         canvas.move(shoot4, random.randint(-1800, -900), 0)
     else:
         canvas.move(shoot4, xspeed, 0)
+        x1, y1, x2, y2 = canvas.coords(shoot4)
+        x3 = pos[0]
+        y3 = pos[1]
+        dx = x1 - x3
+        dy = y1 - y3
+        if sqrt(dx * dx + dy * dy) < 30:
+            hearts_num -= random.randint(1, 10)
+            hearts_label.config(text=hearts_num)
+            update_hearts()
+            canvas.move(shoot4, random.randint(-1800, -900), 0)
     if canvas.coords(shoot5)[0] > 800:
         canvas.move(shoot5, random.randint(-1800, -900), 0)
     else:
         canvas.move(shoot5, xspeed, 0)
+        x1, y1, x2, y2 = canvas.coords(shoot5)
+        x3 = pos[0]
+        y3 = pos[1]
+        dx = x1 - x3
+        dy = y1 - y3
+        if sqrt(dx * dx + dy * dy) < 30:
+            hearts_num -= random.randint(1, 10)
+            hearts_label.config(text=hearts_num)
+            update_hearts()
+            canvas.move(shoot5, random.randint(-1800, -900), 0)
     if canvas.coords(shoot6)[0] > 800:
         canvas.move(shoot6, random.randint(-1800, -900), 0)
     else:
         canvas.move(shoot6, xspeed, 0)
+        x1, y1, x2, y2 = canvas.coords(shoot6)
+        x3 = pos[0]
+        y3 = pos[1]
+        dx = x1 - x3
+        dy = y1 - y3
+        if sqrt(dx * dx + dy * dy) < 30:
+            hearts_num -= random.randint(1, 10)
+            hearts_label.config(text=hearts_num)
+            update_hearts()
+            canvas.move(shoot6, 0, random.randint(-1800, -900))
     if canvas.coords(shoot7)[0] > 800:
         canvas.move(shoot7, random.randint(-1800, -900), 0)
     else:
         canvas.move(shoot7, xspeed, 0)
+        x1, y1, x2, y2 = canvas.coords(shoot7)
+        x3 = pos[0]
+        y3 = pos[1]
+        dx = x1 - x3
+        dy = y1 - y3
+        if sqrt(dx * dx + dy * dy) < 30:
+            hearts_num -= random.randint(1, 10)
+            hearts_label.config(text=hearts_num)
+            update_hearts()
+            canvas.move(shoot7, 0, random.randint(-1800, -900))
     if canvas.coords(shoot8)[0] > 800:
         canvas.move(shoot8, random.randint(-1800, -900), 0)
     else:
         canvas.move(shoot8, xspeed, 0)
+        x1, y1, x2, y2 = canvas.coords(shoot8)
+        x3 = pos[0]
+        y3 = pos[1]
+        dx = x1 - x3
+        dy = y1 - y3
+        if sqrt(dx * dx + dy * dy) < 30:
+            hearts_num -= random.randint(1, 10)
+            hearts_label.config(text=hearts_num)
+            update_hearts()
+            canvas.move(shoot8, 0, random.randint(-1800, -900))
     if canvas.coords(shoot9)[0] > 800:
         canvas.move(shoot9, random.randint(-1800, -900), 0)
     else:
         canvas.move(shoot9, xspeed, 0)
+        x1, y1, x2, y2 = canvas.coords(shoot9)
+        x3 = pos[0]
+        y3 = pos[1]
+        dx = x1 - x3
+        dy = y1 - y3
+        if sqrt(dx * dx + dy * dy) < 30:
+            hearts_num -= random.randint(1, 10)
+            hearts_label.config(text=hearts_num)
+            update_hearts()
+            canvas.move(shoot9, 0, random.randint(-1800, -900))
     if canvas.coords(shootv1)[1] > 500:
         canvas.move(shootv1, 0, random.randint(-1800, -900))
     else:
         canvas.move(shootv1, 0, yspeed)
+        x1, y1, x2, y2 = canvas.coords(shootv1)
+        x3 = pos[0]
+        y3 = pos[1]
+        dx = x1 - x3
+        dy = y1 - y3
+        if sqrt(dx * dx + dy * dy) < 30:
+            hearts_num -= random.randint(1, 10)
+            hearts_label.config(text=hearts_num)
+            update_hearts()
+            canvas.move(shootv1, 0, random.randint(-1800, -900))
     if canvas.coords(shootv2)[1] > 500:
         canvas.move(shootv2, 0, random.randint(-1800, -900))
     else:
         canvas.move(shootv2, 0, yspeed)
+        x1, y1, x2, y2 = canvas.coords(shootv2)
+        x3 = pos[0]
+        y3 = pos[1]
+        dx = x1 - x3
+        dy = y1 - y3
+        if sqrt(dx * dx + dy * dy) < 30:
+            hearts_num -= random.randint(1, 10)
+            hearts_label.config(text=hearts_num)
+            update_hearts()
+            canvas.move(shootv2, 0, random.randint(-1800, -900))
     if canvas.coords(shootv3)[1] > 500:
         canvas.move(shootv3, 0, random.randint(-1800, -900))
     else:
         canvas.move(shootv3, 0, yspeed)
+        x1, y1, x2, y2 = canvas.coords(shootv3)
+        x3 = pos[0]
+        y3 = pos[1]
+        dx = x1 - x3
+        dy = y1 - y3
+        if sqrt(dx * dx + dy * dy) < 30:
+            hearts_num -= random.randint(1, 10)
+            hearts_label.config(text=hearts_num)
+            update_hearts()
+            canvas.move(shootv3, 0, random.randint(-1800, -900))
     if canvas.coords(shootv4)[1] > 500:
         canvas.move(shootv4, 0, random.randint(-1800, -900))
     else:
         canvas.move(shootv4, 0, yspeed)
+        x1, y1, x2, y2 = canvas.coords(shootv4)
+        x3 = pos[0]
+        y3 = pos[1]
+        dx = x1 - x3
+        dy = y1 - y3
+        if sqrt(dx * dx + dy * dy) < 30:
+            hearts_num -= random.randint(1, 10)
+            hearts_label.config(text=hearts_num)
+            update_hearts()
+            canvas.move(shootv4, 0, random.randint(-1800, -900))
     if canvas.coords(shootv5)[1] > 500:
         canvas.move(shootv5, 0, random.randint(-1800, -900))
     else:
         canvas.move(shootv5, 0, yspeed)
+        x1, y1, x2, y2 = canvas.coords(shootv1)
+        x3 = pos[0]
+        y3 = pos[1]
+        dx = x1 - x3
+        dy = y1 - y3
+        if sqrt(dx * dx + dy * dy) < 30:
+            hearts_num -= random.randint(1, 10)
+            hearts_label.config(text=hearts_num)
+            update_hearts()
+            canvas.move(shootv5, 0, random.randint(-1800, -900))
     if canvas.coords(shootv6)[1] > 500:
         canvas.move(shootv6, 0, random.randint(-1800, -900))
     else:
         canvas.move(shootv6, 0, yspeed)
+        x1, y1, x2, y2 = canvas.coords(shootv6)
+        x3 = pos[0]
+        y3 = pos[1]
+        dx = x1 - x3
+        dy = y1 - y3
+        if sqrt(dx * dx + dy * dy) < 30:
+            hearts_num -= random.randint(1, 10)
+            hearts_label.config(text=hearts_num)
+            update_hearts()
+            canvas.move(shootv6, 0, random.randint(-1800, -900))
     if canvas.coords(shootv7)[1] > 500:
         canvas.move(shootv7, 0, random.randint(-1800, -900))
     else:
         canvas.move(shootv7, 0, yspeed)
+        x1, y1, x2, y2 = canvas.coords(shootv7)
+        x3 = pos[0]
+        y3 = pos[1]
+        dx = x1 - x3
+        dy = y1 - y3
+        if sqrt(dx * dx + dy * dy) < 30:
+            hearts_num -= random.randint(1, 10)
+            hearts_label.config(text=hearts_num)
+            update_hearts()
+            canvas.move(shootv7, 0, random.randint(-1800, -900))
     if canvas.coords(shootv8)[1] > 500:
         canvas.move(shootv8, 0, random.randint(-1800, -900))
     else:
         canvas.move(shootv8, 0, yspeed)
+        x1, y1, x2, y2 = canvas.coords(shootv8)
+        x3 = pos[0]
+        y3 = pos[1]
+        dx = x1 - x3
+        dy = y1 - y3
+        if sqrt(dx * dx + dy * dy) < 30:
+            hearts_num -= random.randint(1, 10)
+            hearts_label.config(text=hearts_num)
+            update_hearts()
+            canvas.move(shootv8, 0, random.randint(-1800, -900))
     if canvas.coords(shootv9)[1] > 500:
         canvas.move(shootv9, 0, random.randint(-1800, -900))
     else:
         canvas.move(shootv9, 0, yspeed)
+        x1, y1, x2, y2 = canvas.coords(shootv9)
+        x3 = pos[0]
+        y3 = pos[1]
+        dx = x1 - x3
+        dy = y1 - y3
+        if sqrt(dx * dx + dy * dy) < 30:
+            hearts_num -= random.randint(1, 10)
+            hearts_label.config(text=hearts_num)
+            update_hearts()
+            canvas.move(shootv9, 0, random.randint(-1800, -900))
     if canvas.coords(shootv10)[1] > 500:
         canvas.move(shootv10, 0, random.randint(-1800, -900))
     else:
         canvas.move(shootv10, 0, yspeed)
+        x1, y1, x2, y2 = canvas.coords(shootv10)
+        x3 = pos[0]
+        y3 = pos[1]
+        dx = x1 - x3
+        dy = y1 - y3
+        if sqrt(dx * dx + dy * dy) < 30:
+            hearts_num -= random.randint(1, 10)
+            hearts_label.config(text=hearts_num)
+            update_hearts()
+            canvas.move(shootv10, 0, random.randint(-1800, -900))
     if canvas.coords(shootv11)[1] > 500:
         canvas.move(shootv11, 0, random.randint(-1800, -900))
     else:
         canvas.move(shootv11, 0, yspeed)
+        x1, y1, x2, y2 = canvas.coords(shootv11)
+        x3 = pos[0]
+        y3 = pos[1]
+        dx = x1 - x3
+        dy = y1 - y3
+        if sqrt(dx * dx + dy * dy) < 30:
+            hearts_num -= random.randint(1, 10)
+            hearts_label.config(text=hearts_num)
+            update_hearts()
+            canvas.move(shootv11, 0, random.randint(-1800, -900))
     if canvas.coords(shootv12)[1] > 500:
         canvas.move(shootv12, 0, random.randint(-1800, -900))
     else:
         canvas.move(shootv12, 0, yspeed)
-    for i in range(len(shoots)):
-        shoot_x = shoots[i]
-        x1, y1, x2, y2 = canvas.coords(shoot_x)
+        x1, y1, x2, y2 = canvas.coords(shootv12)
         x3 = pos[0]
         y3 = pos[1]
-        x4 = pos[2]
-        y4 = pos[3]
         dx = x1 - x3
         dy = y1 - y3
-        if sqrt(dx * dx + dy * dy) < 25 + 40:
+        if sqrt(dx * dx + dy * dy) < 30:
+            hearts_num -= random.randint(1, 10)
+            hearts_label.config(text=hearts_num)
             update_hearts()
-    canvas.after(3, move_shoots)
+            canvas.move(shootv12, 0, random.randint(-1800, -900))
+    canvas.after(2, move_shoots)
 
 
-canvas.after(3, move_shoots)
+canvas.after(2, move_shoots)
 
 
 # hearts
 def update_hearts():
-    global hearts_num
-    if hearts_num == 0:
-        sleep(5)
-        print(timer_label)
+    global hearts_num, end_time
+    if hearts_num <= 0:
+        print()
+        print("Game over")
+        print()
+        print("Time played was:", end_time, "s")
+        sleep(3)
         exit()
-    hearts_num -= 1
-    hearts_label.config(text=hearts_num)
     print("The heart number remaining: ", hearts_num)
 
 
-hearts_num = 5
+health = "HP"
+health_label = Label(app)
+health_label.place(x=43, y=24)
+health_label.config(text=health)
 hearts_label = Label(app)
-hearts_label.place(x=55, y=10)
+hearts_label.place(x=65, y=24)
 hearts_label.config(text=hearts_num)
 
 
