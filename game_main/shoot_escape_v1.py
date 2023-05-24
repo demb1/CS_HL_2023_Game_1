@@ -578,12 +578,16 @@ hearts_label.config(text=hearts_num)
 # cords exit rule
 def coordsexit():
     if canvas.coords(hero)[0] > 760:
+        print(end_time)
         exit(0)
     elif canvas.coords(hero)[0] < 0:
+        print(end_time)
         exit(0)
     elif canvas.coords(hero)[1] > 480:
+        print(end_time)
         exit(0)
     elif canvas.coords(hero)[1] < 0:
+        print(end_time)
         exit(0)
 
 
