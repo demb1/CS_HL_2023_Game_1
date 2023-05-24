@@ -262,7 +262,7 @@ def move_shoots():
         y3 = pos[1]
         dx = x1 - x3
         dy = y1 - y3
-        if sqrt(dx * dx + dy * dy) < 30:
+        if sqrt(dx * dx + dy * dy) < 33:
             hearts_num -= random.randint(1, 10)
             hearts_label.config(text=hearts_num)
             update_hearts()
@@ -276,7 +276,7 @@ def move_shoots():
         y3 = pos[1]
         dx = x1 - x3
         dy = y1 - y3
-        if sqrt(dx * dx + dy * dy) < 30:
+        if sqrt(dx * dx + dy * dy) < 33:
             hearts_num -= random.randint(1, 10)
             hearts_label.config(text=hearts_num)
             update_hearts()
@@ -290,7 +290,7 @@ def move_shoots():
         y3 = pos[1]
         dx = x1 - x3
         dy = y1 - y3
-        if sqrt(dx * dx + dy * dy) < 30:
+        if sqrt(dx * dx + dy * dy) < 33:
             hearts_num -= random.randint(1, 10)
             hearts_label.config(text=hearts_num)
             update_hearts()
@@ -304,7 +304,7 @@ def move_shoots():
         y3 = pos[1]
         dx = x1 - x3
         dy = y1 - y3
-        if sqrt(dx * dx + dy * dy) < 30:
+        if sqrt(dx * dx + dy * dy) < 33:
             hearts_num -= random.randint(1, 10)
             hearts_label.config(text=hearts_num)
             update_hearts()
@@ -318,7 +318,7 @@ def move_shoots():
         y3 = pos[1]
         dx = x1 - x3
         dy = y1 - y3
-        if sqrt(dx * dx + dy * dy) < 30:
+        if sqrt(dx * dx + dy * dy) < 33:
             hearts_num -= random.randint(1, 10)
             hearts_label.config(text=hearts_num)
             update_hearts()
@@ -332,7 +332,7 @@ def move_shoots():
         y3 = pos[1]
         dx = x1 - x3
         dy = y1 - y3
-        if sqrt(dx * dx + dy * dy) < 30:
+        if sqrt(dx * dx + dy * dy) < 33:
             hearts_num -= random.randint(1, 10)
             hearts_label.config(text=hearts_num)
             update_hearts()
@@ -346,7 +346,7 @@ def move_shoots():
         y3 = pos[1]
         dx = x1 - x3
         dy = y1 - y3
-        if sqrt(dx * dx + dy * dy) < 30:
+        if sqrt(dx * dx + dy * dy) < 33:
             hearts_num -= random.randint(1, 10)
             hearts_label.config(text=hearts_num)
             update_hearts()
@@ -360,7 +360,7 @@ def move_shoots():
         y3 = pos[1]
         dx = x1 - x3
         dy = y1 - y3
-        if sqrt(dx * dx + dy * dy) < 30:
+        if sqrt(dx * dx + dy * dy) < 33:
             hearts_num -= random.randint(1, 10)
             hearts_label.config(text=hearts_num)
             update_hearts()
@@ -374,7 +374,7 @@ def move_shoots():
         y3 = pos[1]
         dx = x1 - x3
         dy = y1 - y3
-        if sqrt(dx * dx + dy * dy) < 30:
+        if sqrt(dx * dx + dy * dy) < 33:
             hearts_num -= random.randint(1, 10)
             hearts_label.config(text=hearts_num)
             update_hearts()
@@ -388,7 +388,7 @@ def move_shoots():
         y3 = pos[1]
         dx = x1 - x3
         dy = y1 - y3
-        if sqrt(dx * dx + dy * dy) < 30:
+        if sqrt(dx * dx + dy * dy) < 33:
             hearts_num -= random.randint(1, 10)
             hearts_label.config(text=hearts_num)
             update_hearts()
@@ -402,7 +402,7 @@ def move_shoots():
         y3 = pos[1]
         dx = x1 - x3
         dy = y1 - y3
-        if sqrt(dx * dx + dy * dy) < 30:
+        if sqrt(dx * dx + dy * dy) < 33:
             hearts_num -= random.randint(1, 10)
             hearts_label.config(text=hearts_num)
             update_hearts()
@@ -416,7 +416,7 @@ def move_shoots():
         y3 = pos[1]
         dx = x1 - x3
         dy = y1 - y3
-        if sqrt(dx * dx + dy * dy) < 30:
+        if sqrt(dx * dx + dy * dy) < 33:
             hearts_num -= random.randint(1, 10)
             hearts_label.config(text=hearts_num)
             update_hearts()
@@ -430,7 +430,7 @@ def move_shoots():
         y3 = pos[1]
         dx = x1 - x3
         dy = y1 - y3
-        if sqrt(dx * dx + dy * dy) < 30:
+        if sqrt(dx * dx + dy * dy) < 33:
             hearts_num -= random.randint(1, 10)
             hearts_label.config(text=hearts_num)
             update_hearts()
@@ -444,7 +444,7 @@ def move_shoots():
         y3 = pos[1]
         dx = x1 - x3
         dy = y1 - y3
-        if sqrt(dx * dx + dy * dy) < 30:
+        if sqrt(dx * dx + dy * dy) < 33:
             hearts_num -= random.randint(1, 10)
             hearts_label.config(text=hearts_num)
             update_hearts()
@@ -458,7 +458,7 @@ def move_shoots():
         y3 = pos[1]
         dx = x1 - x3
         dy = y1 - y3
-        if sqrt(dx * dx + dy * dy) < 30:
+        if sqrt(dx * dx + dy * dy) < 33:
             hearts_num -= random.randint(1, 10)
             hearts_label.config(text=hearts_num)
             update_hearts()
@@ -472,7 +472,7 @@ def move_shoots():
         y3 = pos[1]
         dx = x1 - x3
         dy = y1 - y3
-        if sqrt(dx * dx + dy * dy) < 30:
+        if sqrt(dx * dx + dy * dy) < 33:
             hearts_num -= random.randint(1, 10)
             hearts_label.config(text=hearts_num)
             update_hearts()
@@ -486,7 +486,7 @@ def move_shoots():
         y3 = pos[1]
         dx = x1 - x3
         dy = y1 - y3
-        if sqrt(dx * dx + dy * dy) < 30:
+        if sqrt(dx * dx + dy * dy) < 33:
             hearts_num -= random.randint(1, 10)
             hearts_label.config(text=hearts_num)
             update_hearts()
@@ -500,7 +500,7 @@ def move_shoots():
         y3 = pos[1]
         dx = x1 - x3
         dy = y1 - y3
-        if sqrt(dx * dx + dy * dy) < 30:
+        if sqrt(dx * dx + dy * dy) < 33:
             hearts_num -= random.randint(1, 10)
             hearts_label.config(text=hearts_num)
             update_hearts()
@@ -514,7 +514,7 @@ def move_shoots():
         y3 = pos[1]
         dx = x1 - x3
         dy = y1 - y3
-        if sqrt(dx * dx + dy * dy) < 30:
+        if sqrt(dx * dx + dy * dy) < 33:
             hearts_num -= random.randint(1, 10)
             hearts_label.config(text=hearts_num)
             update_hearts()
@@ -528,7 +528,7 @@ def move_shoots():
         y3 = pos[1]
         dx = x1 - x3
         dy = y1 - y3
-        if sqrt(dx * dx + dy * dy) < 30:
+        if sqrt(dx * dx + dy * dy) < 33:
             hearts_num -= random.randint(1, 10)
             hearts_label.config(text=hearts_num)
             update_hearts()
@@ -542,7 +542,7 @@ def move_shoots():
         y3 = pos[1]
         dx = x1 - x3
         dy = y1 - y3
-        if sqrt(dx * dx + dy * dy) < 30:
+        if sqrt(dx * dx + dy * dy) < 33:
             hearts_num -= random.randint(1, 10)
             hearts_label.config(text=hearts_num)
             update_hearts()
